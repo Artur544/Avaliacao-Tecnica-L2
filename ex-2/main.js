@@ -10,7 +10,7 @@ async function fazerBusca() {
         });
 
         console.log('Conectado ao banco com sucesso!');
-        
+
         const [data] = await conexao.execute(
             `SELECT 
                 PR.descricaopredio AS Predio,
@@ -32,6 +32,7 @@ async function fazerBusca() {
             e.Dia_Semana && acc.ocupadas.push(e);
             return acc
         },{livres: [], ocupadas: []})
+        
         console.log(lista);
 
         await conexao.end();
