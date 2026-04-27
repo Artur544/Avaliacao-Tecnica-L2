@@ -45,7 +45,7 @@ const loadOrder = async () => {
 };
 
 // verifica se um produto cabe em alguma das caixas,
-// retorna falso caso o produto seja maior que todas as cixas
+// retorna falso caso o produto seja maior que todas as caixas
 // se não, retorna em qual das caixas ele cabe
 const verifyUniSize = (produto) => {
     let res = true;
