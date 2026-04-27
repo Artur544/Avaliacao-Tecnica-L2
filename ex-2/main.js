@@ -1,6 +1,6 @@
 const mysql = require("mysql2/promise");
 
-async function fazerBusca() {
+async function classesEmptyOrNot() {
     try {
         const conexao = await mysql.createConnection({
             host: "localhost",
@@ -31,15 +31,15 @@ async function fazerBusca() {
             !e.Dia_Semana && acc.livres.push(e);
             e.Dia_Semana && acc.ocupadas.push(e);
             return acc
-        },{livres: [], ocupadas: []})
-        
+        },{livres: [], ocupadas: []});
+
         console.log(lista);
 
         await conexao.end();
     } catch (erro) {
         console.error('Ocorreu um erro:', erro);
-    }
-}
+    };
+};
 
-// Executa a função buscando por algo específico
-fazerBusca();
+// Executa a função e imprime no console
+classesEmptyOrNot();
