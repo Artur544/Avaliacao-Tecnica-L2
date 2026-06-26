@@ -2,7 +2,7 @@
 // Caixa 2: 80 x 50 x 40
 // Caixa 3: 50 x 80 x 60
 
-const url = "/entrada.json";
+const url = "./entrada.json";
 
 const caixas = [
     {caixa_tam: 1, dimensoes: { altura: 30, largura: 40, comprimento: 80 }},
@@ -15,13 +15,16 @@ const vetor_dms = ["altura", "largura", "comprimento"];
 // espera a funcao leadOrder e ja imprime a resposta no console
 const resDelivery = async () => {
     let res = await loadOrder();
-    typeof res === "object" ? console.log(JSON.stringify(res)) : console.log(res)
+    if (typeof res === "object") {
+        console.log(JSON.stringify(res));
+        console.dir(res, { depth: null, colors: true });
+    }
+    else console.log(res);
 };
 
 // carrega todo o entrada.json
-const loadOrder = async () => {
-    let res = await fetch(url);
-    let data = await res.json();
+const loadOrder = () => {
+    let data = require(url);
     let obj_entrega = {pedidos: []}
 
     data.pedidos.forEach((order, data_index) => {
@@ -136,3 +139,5 @@ const compSmallerProduct = (produtos) => {
     })
     return Object.keys(obj_vol).reduce((a, b) => obj_vol[a] < obj_vol[b] ? a : b);
 };
+
+resDelivery()
